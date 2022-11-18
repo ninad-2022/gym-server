@@ -11,15 +11,11 @@ class UserCtrl {
       "name",
       "mobile",
       "email",
-      "avatar",
       "status",
       "gender",
-      "idDoc",
-      "address",
-      "createdAt",
+      // "createdAt",
       "userId",
       "role",
-      "dob",
     ]);
   }
 
@@ -80,8 +76,9 @@ class UserCtrl {
 
   static deleteUser(req, res) {
     const { id } = req.params;
+    console.log("server id", id);
 
-    UserModel.findOneAndUpdate({ _id: id }, { status: 2 })
+    UserModel.findOneAndDelete({ _id: id }, { status: 2 })
       .then((result) => {
         res
           .status(200)

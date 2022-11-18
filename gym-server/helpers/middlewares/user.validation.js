@@ -20,7 +20,7 @@ function validateUser(req, res, next) {
       .allow("")
       .optional()
       .pattern(new RegExp("^[a-zA-Z0-9]{3,30}$")),
-    gender: Joi.string().min(1).max(15),
+    // gender: Joi.string().min(1).max(15).optional(),
     role: Joi.string().min(1).max(25),
     // status: Joi.any(),
     userId: Joi.number().min(0).max(100).optional(),
