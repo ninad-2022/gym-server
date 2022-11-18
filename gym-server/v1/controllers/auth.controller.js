@@ -70,30 +70,30 @@ class AuthCtrl {
     }
   }
 
-  //   static refreshToken(req, res) {
-  //     const { refresh } = req.body;
+  static refreshToken(req, res) {
+    const { refresh } = req.body;
 
-  //     const payload = verifyToken(refresh);
+    const payload = verifyToken(refresh);
 
-  //     if (payload?._id) {
-  //       // refresh token is valid
-  //       const accessT = createToken(
-  //         { _id: payload?._id, role: payload?.role },
-  //         60 * 10
-  //       );
-  //       const refreshT = createToken(
-  //         { _id: payload?._id, role: payload?.role },
-  //         60 * 25
-  //       );
+    if (payload?._id) {
+      // refresh token is valid
+      const accessT = createToken(
+        { _id: payload?._id, role: payload?.role },
+        60 * 10
+      );
+      const refreshT = createToken(
+        { _id: payload?._id, role: payload?.role },
+        60 * 25
+      );
 
-  //       res
-  //         .status(200)
-  //         .send({ data: { accessT, refreshT }, message: "token created" });
-  //     } else {
-  //       // refresh token is invalid
-  //       res.status(403).send({ message: "Session Expired", error: null });
-  //     }
-  //   }
+      res
+        .status(200)
+        .send({ data: { accessT, refreshT }, message: "token created" });
+    } else {
+      // refresh token is invalid
+      res.status(403).send({ message: "Session Expired", error: null });
+    }
+  }
 }
 
 module.exports = AuthCtrl;

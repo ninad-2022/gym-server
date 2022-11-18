@@ -1,6 +1,6 @@
 const router = require("express").Router(); //Router is middleware of express
 const multer = require("multer");
-// const authorize = require("../../helpers/middlewares/authorize");
+const authorize = require("../../helpers/middlewares/authorize");
 const path = require("path");
 const { validateUser } = require("../../helpers/middlewares/user.validation");
 
@@ -45,20 +45,21 @@ router.put(
     { name: "idDoc", maxCount: 1 },
   ]),
   validateUser,
+  authorize("superadmin", "admin", "customer"),
   updateUser
 ); //!updateuser
-router.delete("/:id", deleteUser);
-router.get("/statistic", userStatistic);
-router.get("/:id", fetchOneUser);
-router.get("/", fetchAllUser);
+router.delete("/:id", authorize("superadmin", "admin"), deleteUser);
+router.get("/statistic", authorize("superadmin", "admin"), userStatistic);
+router.get("/:id", authorize("superadmin", "admin", "customer"), fetchOneUser);
+router.get("/", authorize("superadmin", "admin"), fetchAllUser);
 router.put(
   "/image/:id",
   upload.fields([
     { name: "avatar", maxCount: 1 },
     { name: "idDoc", maxCount: 1 },
   ]),
-  validateUser
-
+  validateUser,
+  authorize("superadmin", "admin", "customer")
   // updateDeleteImages
 );
 

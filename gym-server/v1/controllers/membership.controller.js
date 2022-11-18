@@ -29,6 +29,7 @@ class MembershipCtrl {
         res.status(500).send({ message: "Could not Updated", error: err });
       });
   } //updateMem
+
   static deleteMembership(req, res) {
     const { id: _id } = req.params;
 
