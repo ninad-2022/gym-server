@@ -4,8 +4,8 @@ class MembershipCtrl {
   static createMembership(req, res) {
     const membership = req.body;
     console.log("Membership: ", req);
-    if (!membership.title)
-      return res.status(500).send({ message: "enter title" });
+    // if (!membership.title)
+    //   return res.status(500).send({ message: "enter title" });
 
     new MembershipModel(membership)
       .save()
