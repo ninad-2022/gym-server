@@ -8,8 +8,8 @@ const {
   getSingleMembership,
   updateMembership,
 } = require("../controllers/membership.controller");
-router.post("/", authorize("superadmin", "admin"), createMembership); //!createcard
-router.put("/:id", authorize("superadmin", "admin"), updateMembership); //!updatecard
+router.post("/", authorize("superadmin", "admin"), createMembership);
+router.put("/:id", authorize("superadmin", "admin"), updateMembership);
 router.delete("/:id", authorize("superadmin", "admin"), deleteMembership);
 router.get("/:id", authorize("superadmin", "admin"), getSingleMembership);
 router.get("/", authorize("superadmin", "admin"), getAllMembership);
