@@ -12,6 +12,6 @@ router.post("/", authorize("superadmin", "admin"), createMembership);
 router.put("/:id", authorize("superadmin", "admin"), updateMembership);
 router.delete("/:id", authorize("superadmin", "admin"), deleteMembership);
 router.get("/:id", authorize("superadmin", "admin"), getSingleMembership);
-router.get("/", authorize("superadmin", "admin"), getAllMembership);
+router.get("/", getAllMembership);
 
 module.exports = router;
