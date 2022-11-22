@@ -4,8 +4,6 @@ class ContactUsCtrl {
   static createContactUs(req, res) {
     const contactus = req.body;
     console.log("ContactUs: ", req);
-    // if (!contactus.title)
-    //   return res.status(500).send({ message: "enter title" });
 
     new contactUsModel(contactus)
       .save()
@@ -16,7 +14,7 @@ class ContactUsCtrl {
         console.log(err);
         res.status(500).send({ message: "Could not created", error: err });
       });
-  } //createMem
+  } //createCon
   static updateContactUs(req, res) {
     const contactus = req.body;
     const { id: _id } = req.params;
@@ -29,7 +27,7 @@ class ContactUsCtrl {
         console.log(err);
         res.status(500).send({ message: "Could not Updated", error: err });
       });
-  } //updateMem
+  } //updateCon
 
   static deleteContactUs(req, res) {
     const { id: _id } = req.params;
@@ -43,7 +41,7 @@ class ContactUsCtrl {
         console.log(err);
         res.status(500).send({ message: "Could not Deleted", error: err });
       });
-  } //deleteMem
+  } //deleteCon
   static getSingleContactUs(req, res) {
     const { id: _id } = req.params;
 
@@ -58,7 +56,7 @@ class ContactUsCtrl {
           .status(404)
           .send({ message: "Could not get contactus Details", error: err });
       });
-  } //getSingleMem
+  } //getSingleCon
   static getAllContactUs(req, res) {
     contactUsModel
       .find()
@@ -71,6 +69,6 @@ class ContactUsCtrl {
           .status(404)
           .send({ message: "Could not get contactus Details", error: err });
       });
-  } //getAllMem
+  } //getAllCon
 }
 module.exports = ContactUsCtrl;
